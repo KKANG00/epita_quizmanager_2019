@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -27,20 +29,29 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="170.0" layoutY="14.0" text="topic:" />
-                  <Label fx:id="qtopic1LB" layoutX="209.0" layoutY="14.0" text="topic1" />
-                  <Label fx:id="qtopic2LB" layoutX="255.0" layoutY="14.0" text="topic2" />
-                  <Label layoutX="161.0" layoutY="28.0" text="difficulty:" />
-                  <Label fx:id="qdifficultyLB" layoutX="225.0" layoutY="28.0" text="difficluty" />
-                  <TitledPane animated="false" layoutX="22.0" layoutY="58.0" prefHeight="97.0" prefWidth="369.0" text="Question">
+                  <Label layoutX="28.0" layoutY="14.0" text="topic:" />
+                  <Label fx:id="qtopic1LB" layoutX="90.0" layoutY="14.0" text="topic1" />
+                  <Label fx:id="qtopic2LB" layoutX="190.0" layoutY="14.0" text="topic2" />
+                  <Label layoutX="28.0" layoutY="28.0" text="difficulty:" />
+                  <Label fx:id="qdifficultyLB" layoutX="90.0" layoutY="28.0" text="difficluty" />
+                  <TitledPane animated="false" layoutX="22.0" layoutY="58.0" prefHeight="77.0" prefWidth="369.0" text="Question">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="262.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="44.0" prefWidth="367.0">
                            <children>
                               <Label fx:id="questionLB" layoutX="14.0" layoutY="7.0" text="question" />
                            </children></AnchorPane>
                     </content>
                   </TitledPane>
-                  <ListView fx:id="choicecol" layoutX="22.0" layoutY="171.0" prefHeight="107.0" prefWidth="369.0" />
+                  <ListView fx:id="choicecol" layoutX="22.0" layoutY="149.0" prefHeight="97.0" prefWidth="369.0" />
+                  <MenuButton layoutX="307.0" layoutY="255.0" mnemonicParsing="false" text="Managing">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#Editquestion" text="Edit" />
+                      <MenuItem mnemonicParsing="false" onAction="#Deletequestion" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#Addquestion" text="Add" />
+                    </items>
+                  </MenuButton>
+                  <Label layoutX="22.0" layoutY="259.0" text="Answer:" />
+                  <Label fx:id="qanswerLB" layoutX="71.0" layoutY="259.0" text="answer" />
                </children>
             </AnchorPane>
         </items>

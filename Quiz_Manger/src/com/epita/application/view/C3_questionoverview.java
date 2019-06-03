@@ -6,6 +6,8 @@ import com.epita.application.Main;
 import com.epita.application.model.Question;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -34,6 +36,8 @@ public class C3_questionoverview {
     private Label qtopic2LB;
     @FXML
     private Label qdifficultyLB;
+    @FXML
+    private Label qanswerLB;
 	
 	public Main main;
 	public C3_questionoverview() {}
@@ -56,6 +60,7 @@ public class C3_questionoverview {
             qtopic1LB.setText(question.getqtopic1());
             qtopic2LB.setText(question.getqtopic2());
             qdifficultyLB.setText(question.getqdifficulty());
+            qanswerLB.setText(question.getqanswer());
             choicecol.getItems().clear();
             if(question.typeofquestion.equals("multi")) {
 	            for(int i=0;i<question.getchoices().MCQtoList().size();i++) 
@@ -69,7 +74,43 @@ public class C3_questionoverview {
         	qtopic1LB.setText("");
             qtopic2LB.setText("");
             qdifficultyLB.setText("");
+            qanswerLB.setText("");
         }
+    }
+    
+    @FXML
+    private void Addquestion() {
+        Question newquestion = new Question();
+        boolean okClicked = main.Edit_AddPage(newquestion);
+        if (okClicked) {
+            main.getquesitonList().add(newquestion);
+        }
+    }
+    
+    @FXML
+    private void Editquestion() {
+        Question selected = questiontable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            boolean okClicked = main.Edit_AddPage(selected);
+            if (okClicked) {
+                showQuestionDetails(selected);
+            }
+
+        } else {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.initOwner(main.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void Deletequestion() {
+        int selected = questiontable.getSelectionModel().getSelectedIndex();
+        if (selected >= 0) questiontable.getItems().remove(selected);
     }
 
     public void setMainApp(Main mainApp) {

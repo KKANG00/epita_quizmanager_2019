@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Questions>
+<Question>
+<question>jal rae</question>
+<qnumber>02</qnumber>
+<qtopic1>common sense</qtopic1>
+<qtopic2>math</qtopic2>
+<qdifficulty>10/10</qdifficulty>
+<qanswer>4</qanswer>
+<typeofquestion>multi</typeofquestion>
+<choices>c0,c3,c4,cc</choices>
+</Question>
+<Question>
+<question>hello</question>
+<qnumber>03</qnumber>
+<qtopic1>common sense</qtopic1>
+<qtopic2></qtopic2>
+<qdifficulty>1/10</qdifficulty>
+<qanswer>2</qanswer>
+<typeofquestion>multi</typeofquestion>
+<choices>c1,c2,c3</choices>
+</Question>
+<Question>
+<question>hello again</question>
+<qnumber>09</qnumber>
+<qtopic1>common sense</qtopic1>
+<qtopic2>math</qtopic2>
+<qdifficulty>1/10</qdifficulty>
+<qanswer>2</qanswer>
+<typeofquestion>Open</typeofquestion>
+<choices></choices>
+</Question>
+</Questions>
