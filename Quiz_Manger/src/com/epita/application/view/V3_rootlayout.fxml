@@ -12,15 +12,9 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#Openmenu" text="Open" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save as" />
+                  <MenuItem mnemonicParsing="false" onAction="#Savemenu" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#SaveAsmenu" text="Save as" />
                   <MenuItem mnemonicParsing="false" onAction="#Exitmenu" text="Exit" />
-                  <MenuItem mnemonicParsing="false" text="New" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

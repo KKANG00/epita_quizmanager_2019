@@ -40,7 +40,7 @@ public class Question {
         this.qnumber = new SimpleStringProperty(qnumber);
         this.qdifficulty = new SimpleStringProperty(qdifficulty);
         this.qanswer = new SimpleStringProperty(qanswer);
-        this.typeofquestion = "Open";
+        this.typeofquestion = "open";
     }
     
     public StringProperty getqnumberP() {
@@ -85,23 +85,23 @@ public class Question {
     }
     
     public void setqnumber(String qnumber) {
-    	this.question.set(qnumber);
+    	this.qnumber.set(qnumber);
     }
     
     public void setqtopic1(String qtopic1) {
-    	this.question.set(qtopic1);
+    	this.qtopic1.set(qtopic1);
     }
     
     public void setqtopic2(String qtopic2) {
-    	this.question.set(qtopic2);
+    	this.qtopic2.set(qtopic2);
     }
     
     public void setqdifficulty(String qdifficulty) {
-    	this.question.set(qdifficulty);
+    	this.qdifficulty.set(qdifficulty);
     }
     
     public void setqanswer(String qanswer) {
-    	this.question.set(qanswer);
+    	this.qanswer.set(qanswer);
     }
     
     public void setchoices(MCQChoice choices) {

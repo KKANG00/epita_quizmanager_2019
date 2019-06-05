@@ -13,5 +13,19 @@ public class MCQChoice {
 	public List<String> MCQtoList(){
 		return choices;
 	}
+	
+	public String choices_ListtoString() {
+		if(!choices.isEmpty()) {
+			String choices_=choices.get(0);
+			choices_ += ",";
+			for(int i=1;i<choices.size();i++) {
+				choices_ += choices.get(i);
+				if(!(i==choices.size()-1)) choices_ += ",";
+			}
+			return choices_;
+		} else {
+			return "";
+		}
+	}
 
 }

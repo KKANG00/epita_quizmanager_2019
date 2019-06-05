@@ -23,6 +23,8 @@ public class C3_Add_Edit {
 	@FXML
     private TextField questionF;
 	@FXML
+    private TextField qnumberF;
+	@FXML
     private TextField MCQChoice1F;
 	@FXML
     private TextField MCQChoice2F;
@@ -52,18 +54,29 @@ public class C3_Add_Edit {
         qtopic2F.setText(question.getqtopic2());
         qdifficultyF.setText(question.getqdifficulty());
         questionF.setText(question.getquestion());
+        qnumberF.setText(question.getqnumber());
+        qanswerF.setText(question.getqanswer());
         if(question.typeofquestion.equals("multi")) {
-	        MCQChoice1F.setText(question.getchoices().MCQtoList().get(0));
-	        MCQChoice2F.setText(question.getchoices().MCQtoList().get(1));
-	        MCQChoice3F.setText(question.getchoices().MCQtoList().get(2));
-	        MCQChoice4F.setText(question.getchoices().MCQtoList().get(3));
+        	switch(question.getchoices().MCQtoList().size()) {
+        	case 2: MCQChoice1F.setText(question.getchoices().MCQtoList().get(0));
+	        		MCQChoice2F.setText(question.getchoices().MCQtoList().get(1));
+	        		MCQChoice3F.setText("");
+	            	MCQChoice4F.setText(""); break;
+        	case 3: MCQChoice1F.setText(question.getchoices().MCQtoList().get(0));
+    				MCQChoice2F.setText(question.getchoices().MCQtoList().get(1));
+    				MCQChoice3F.setText(question.getchoices().MCQtoList().get(2));
+    				MCQChoice4F.setText(""); break;
+        	case 4: MCQChoice1F.setText(question.getchoices().MCQtoList().get(0));
+					MCQChoice2F.setText(question.getchoices().MCQtoList().get(1));
+					MCQChoice3F.setText(question.getchoices().MCQtoList().get(2));
+        			MCQChoice4F.setText(question.getchoices().MCQtoList().get(3)); break;
+        	}
         } else {
         	MCQChoice1F.setText("");
         	MCQChoice2F.setText("");
         	MCQChoice3F.setText("");
         	MCQChoice4F.setText("");
         }
-        qanswerF.setText(question.getqanswer());
         
     }
     
@@ -78,6 +91,8 @@ public class C3_Add_Edit {
             question.setqtopic2(qtopic2F.getText());
             question.setqdifficulty(qdifficultyF.getText());
             question.setquestion(questionF.getText());
+            question.setqnumber(qnumberF.getText());
+            question.setqanswer(qanswerF.getText());
             
             if(question.typeofquestion.equals("multi")) {
             	List<String> choicelist = new ArrayList<>();
@@ -90,6 +105,7 @@ public class C3_Add_Edit {
 
             okClicked = true;
             dialogStage.close();
+            
         }
     }
     
