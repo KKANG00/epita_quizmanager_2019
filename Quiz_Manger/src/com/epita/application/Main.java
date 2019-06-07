@@ -32,6 +32,8 @@ import com.epita.application.model.QuestionDBhandling;
 import com.epita.application.view.C1_rootlayout;
 import com.epita.application.view.C3_Add_Edit;
 import com.epita.application.view.C3_questionoverview;
+import com.epita.application.view.C1_startmenulayout;
+import com.epita.application.view.C2_login;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -55,55 +57,13 @@ public class Main extends Application {
 	
     private Stage primaryStage;
     private BorderPane mainlayout;
-    private Parent root;
-    
-    @FXML
-    private Button managing;
-    private Button playing;
+    private boolean init = true;
     
     private ObservableList<Question> questionList = FXCollections.observableArrayList();
 
     private static final String XML_FILE = "questionDB.xml";   
     
-    public Main() {
-  
-    	fileXMLDAO xmlDAO = new fileXMLDAO();
-    	
- //   	question, qtopic1, qtopic2, qnumber, qdifficulty, qanswer
-//    	List<String> excl1 = new ArrayList<>();
-//    	List<String> excl2 = new ArrayList<>();
-//    	List<String> excl3 = new ArrayList<>();
-//    	excl1.add("c11"); excl1.add("c12"); excl1.add("c13"); excl1.add("c14");
-//    	excl2.add("c21"); excl2.add("c22"); excl2.add("c23"); excl2.add("c24");
-//    	excl3.add("c31"); excl3.add("c32"); excl3.add("c33"); excl3.add("c34");
-//    	MCQChoice excl1_ = new MCQChoice(excl1);
-//    	MCQChoice excl2_ = new MCQChoice(excl2);
-//    	MCQChoice excl3_ = new MCQChoice(excl3);
-//    	
-//    	Question example1 = new MCQuestion("Where is capital city of France?", "capital city", "", "01", "1/10", "3", excl1_);
-//    	Question example2 = new MCQuestion("who is a president of France?", "country", "people", "02", "2/10", "1", excl2_);
-//    	Question example3 = new MCQuestion("when is Christmas date?", "»ó½Ä", "", "03", "5/10", "1", excl3_);
-//    	Question example4 = new Question("2+2?", "math", "", "04", "2/10", "four");
-//    	
-//    	questionList.add(example1);
-//    	questionList.add(example2);
-//    	questionList.add(example3);
-//    	questionList.add(example4);  	
-
-    	// get all questions in XML to questionList
-//    	for(int i=0;i<questionList.size();i++) {
-//    		xmlDAO.createNewUser(questionList.get(i));
-//    	}
-//    	Document doc = xmlDAO.initXmlDocument();
-//		NodeList listOfquestions = doc.getElementsByTagName("question");
-//		
-//		for(int i=0;i<listOfquestions.getLength();i++) {
-//			
-//			questionList.add(xmlDAO.readfromXML(listOfquestions, i));
-//		}
-//    	
-    	
-    }
+    public Main() {}
     
 	@Override
 	public void start(Stage primaryStage) {
@@ -117,27 +77,8 @@ public class Main extends Application {
 			this.primaryStage = primaryStage;
 	        this.primaryStage.setTitle("Quiz Manager");
 	        
-//	        initRootLayout(); showQuestionOverview();
-	        
-	        FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/V3_rootlayout.fxml"));
-            mainlayout = (BorderPane) loader.load();
-
-            Scene scene = new Scene(mainlayout);
-            primaryStage.setScene(scene);
-            
-            C1_rootlayout controller = loader.getController();
-            controller.setMainApp(this);
-            primaryStage.show();
-            
-            FXMLLoader loader2 = new FXMLLoader();
-            loader2.setLocation(Main.class.getResource("view/V1_startmenu.fxml"));
-            AnchorPane QuestionOverview = (AnchorPane) loader2.load();
-
-            mainlayout.setCenter(QuestionOverview);
-            
-//            C3_questionoverview controller2 = loader2.getController();
-//            controller2.setMainApp(this);
+			initRootLayout();
+	        startpage();
 
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -146,23 +87,31 @@ public class Main extends Application {
 	
 	public void startpage() {
 		try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/V3_rootlayout.fxml"));
-            mainlayout = (BorderPane) loader.load();
-
-            Scene scene = new Scene(mainlayout);
-            primaryStage.setScene(scene);
+//	        FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(Main.class.getResource("view/V3_rootlayout.fxml"));
+//            mainlayout = (BorderPane) loader.load();
+//
+//            Scene scene = new Scene(mainlayout);
+//            primaryStage.setScene(scene);
+//            
+//            C1_rootlayout controller = loader.getController();
+//            controller.setMainApp(this);
+//            primaryStage.show();
             
-            C1_rootlayout controller = loader.getController();
-            controller.setMainApp(this);
-            primaryStage.show();
+            FXMLLoader loader2 = new FXMLLoader();
+            loader2.setLocation(Main.class.getResource("view/V1_startmenu.fxml"));
+            AnchorPane start = (AnchorPane) loader2.load();
+
+            mainlayout.setCenter(start);
+            
+            C1_startmenulayout controller2 = loader2.getController();
+            controller2.setMainApp(this);
             
         } catch (IOException e) {
             e.printStackTrace();
         }
 	}
 	
-	@FXML
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -176,15 +125,17 @@ public class Main extends Application {
             controller.setMainApp(this);
             primaryStage.show();
             
+            if(init) {
+	            File file = new File("questionDB.xml");	
+	            if(file != null) loadfromXML(file);
+	            init = false;
+            }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        File file = new File("questionDB.xml");
-        if(file != null) loadfromXML(file);
     }
 
-	@FXML
     public void showQuestionOverview() {
         try {
 
@@ -202,21 +153,21 @@ public class Main extends Application {
         }
     }
     
-//    public void Login() {
-//    	try {
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(Main.class.getResource("view/V1_login.fxml"));
-//            AnchorPane loginpage = (AnchorPane) loader.load();
-//
-//            mainlayout.setCenter(loginpage);
-//            
-//            C1_login controller = loader.getController();
-//            controller.setMainApp(this);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void Login() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/V2_login.fxml"));
+            AnchorPane loginpage = (AnchorPane) loader.load();
+
+            mainlayout.setCenter(loginpage);
+            
+            C2_login controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     public boolean Edit_AddPage(Question question) {
     	try {
@@ -420,5 +371,11 @@ public class Main extends Application {
 	        alert.showAndWait();
 		}
 		
+	}
+	
+	public void resetlist() {
+		int from =0;
+		int to = questionList.size();
+		questionList.remove(from, to);
 	}
 }

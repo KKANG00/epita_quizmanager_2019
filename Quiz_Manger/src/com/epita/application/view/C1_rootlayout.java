@@ -5,25 +5,26 @@ import java.io.File;
 import com.epita.application.Main;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class C1_rootlayout {
 		
+		private Stage primaryStage;
 	    private Main main;
 	
 	    public void setMainApp(Main main) {
 	        this.main = main;
 	    }
-	//    
-	//    @FXML
-	//    private void handleNew() {
-	//    	main.getquesitonList().clear();
-	//    	main.setDBfilePath(null);
-	//    }
-	
+	    
+	    @FXML
+	    private void goback() {
+	    	main.startpage();
+	    }
+	    
 	    @FXML
 	    private void Openmenu() {
+	    	main.resetlist();
 	        FileChooser fileChooser = new FileChooser();
 	
 	        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(

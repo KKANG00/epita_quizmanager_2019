@@ -20,14 +20,4 @@
 <typeofquestion>multi</typeofquestion>
 <choices>c2,c1,c100</choices>
 </Question>
-<Question>
-<question>qqqqq</question>
-<qtopic1>00</qtopic1>
-<qtopic2>0</qtopic2>
-<qnumber>0</qnumber>
-<qdifficulty>0</qdifficulty>
-<qanswer>9</qanswer>
-<typeofquestion>open</typeofquestion>
-<choices/>
-</Question>
 </Questions>

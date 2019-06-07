@@ -9,12 +9,15 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
+            <Menu mnemonicParsing="false" text="Program">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goback" text="Restart" />
+                  <MenuItem mnemonicParsing="false" onAction="#Exitmenu" text="Exit" />
+               </items></Menu>
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#Openmenu" text="Open" />
                   <MenuItem mnemonicParsing="false" onAction="#Savemenu" text="Save" />
-                  <MenuItem mnemonicParsing="false" onAction="#SaveAsmenu" text="Save as" />
-                  <MenuItem mnemonicParsing="false" onAction="#Exitmenu" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
