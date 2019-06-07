@@ -12,7 +12,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class C3_Add_Edit {
+public class C3_addandedit {
 	
 	@FXML
     private TextField qtopic1F;

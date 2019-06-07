@@ -6,11 +6,9 @@ import com.epita.application.Main;
 
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
-public class C1_rootlayout {
-		
-		private Stage primaryStage;
+public class C0_rootlayout {
+	
 	    private Main main;
 	
 	    public void setMainApp(Main main) {
@@ -24,7 +22,8 @@ public class C1_rootlayout {
 	    
 	    @FXML
 	    private void Openmenu() {
-	    	main.resetlist();
+	    	main.resetquestionList();
+	    	
 	        FileChooser fileChooser = new FileChooser();
 	
 	        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(

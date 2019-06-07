@@ -5,20 +5,18 @@ import com.epita.application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class C1_startmenulayout {
+public class C1_startmenu {
 	
 	private Main main;
 	
-//	@FXML
-//	public void questionoverviewpage() {
-//		main.initRootLayout();
-//		main.showQuestionOverview();
-//	}
+	@FXML
+	public void managingQuiz() {
+		main.login();
+	}
 	
 	@FXML
-	public void gotologin() {
-		//main.initRootLayout();
-		main.Login();
+	public void makingQuiz() {
+		main.makingQuiz();
 	}
 	
     public void setMainApp(Main mainApp) {

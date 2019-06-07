@@ -21,18 +21,18 @@ public class C2_login {
 	
 	@FXML
 	public void gotooverview() {
-		//System.out.println(loginid.getText()+loginpw.getText());
-		if(loginid.getText().equals(VAILD_ID) && loginpw.getText().equals(VAILD_PW)) {
-//			main.initRootLayout();
-			main.showQuestionOverview();
-		} else {
-			Alert alert = new Alert(AlertType.ERROR);
-	        alert.setTitle("Error");
-	        alert.setHeaderText("Login Error");
-	        alert.setContentText("Check your id and password");
-
-	        alert.showAndWait();
-		}
+//		if(loginid.getText().equals(VAILD_ID) && loginpw.getText().equals(VAILD_PW)) {
+			
+			main.managingQuiz();
+		
+//		} else {
+//			Alert alert = new Alert(AlertType.ERROR);
+//	        alert.setTitle("Error");
+//	        alert.setHeaderText("Login Error");
+//	        alert.setContentText("Check your id and password");
+//
+//	        alert.showAndWait();
+//		}
 	}
 	
     public void setMainApp(Main main) {

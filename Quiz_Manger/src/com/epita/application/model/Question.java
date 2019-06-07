@@ -11,20 +11,10 @@ public class Question {
 	private final StringProperty qdifficulty;
 	private final StringProperty qanswer;
 	public String typeofquestion;
-//	private final MCQChoice choices;	
 	
 	public Question() {
 		this(null, null, null, null, null, null);
 	}
-
-//    public Question(String question, String qtopic1, String qtopic2, String qnumber, String qdifficulty, MCQChoice choices) {
-//        this.question = new SimpleStringProperty(question);
-//        this.qtopic1 = new SimpleStringProperty(qtopic1);
-//        this.qtopic2 = new SimpleStringProperty(qtopic2);
-//        this.qnumber = new SimpleStringProperty(qnumber);
-//        this.qdifficulty = new SimpleStringProperty(qdifficulty);
-//        this.choices = choices;
-//    }
 	
     @Override
 	public String toString() {

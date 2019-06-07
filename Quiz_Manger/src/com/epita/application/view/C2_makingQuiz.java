@@ -1,20 +1,24 @@
 package com.epita.application.view;
 
-
-
 import com.epita.application.Main;
 import com.epita.application.model.Question;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
-public class C3_questionoverview {
+public class C2_makingQuiz {
+	private ObservableList<Question> searchedList = FXCollections.observableArrayList();
 	
+	@FXML
+    private TextField searchF;
 	@FXML
     private TableView<Question> questiontable;
     @FXML
@@ -23,8 +27,6 @@ public class C3_questionoverview {
     private TableColumn<Question, String> qtopic1col;
     @FXML
     private ListView<String> choicecol;
-//    List<String> cl = new ArrayList<>();
-//    ObservableList<String> choiceList = FXCollections.observableArrayList();
 
     @FXML
     private Label questionLB;
@@ -37,10 +39,10 @@ public class C3_questionoverview {
     @FXML
     private Label qdifficultyLB;
     @FXML
-    private Label qanswerLB;
+    private Label selectedtopicLB;
 	
 	public Main main;
-	public C3_questionoverview() {}
+	public C2_makingQuiz() {}
 	
 	@FXML
     private void initialize() {
@@ -56,17 +58,13 @@ public class C3_questionoverview {
     private void showQuestionDetails(Question question) {
         if (question != null) {
             questionLB.setText(question.getquestion());
-            //qnumberLB.setText(question.getqnumber());
             qtopic1LB.setText(question.getqtopic1());
             qtopic2LB.setText(question.getqtopic2());
             qdifficultyLB.setText(question.getqdifficulty());
-            qanswerLB.setText(question.getqanswer());
             choicecol.getItems().clear();
             if(question.typeofquestion.equals("multi")) {
 	            for(int i=0;i<question.getchoices().MCQtoList().size();i++) 
 	            	choicecol.getItems().addAll(question.getchoices().MCQtoList().get(i));
-	//            choiceList = question.getchoices().MCQtoList();
-	//            choicecol.setItems(choiceList);
             }
 
         } else {
@@ -74,43 +72,7 @@ public class C3_questionoverview {
         	qtopic1LB.setText("");
             qtopic2LB.setText("");
             qdifficultyLB.setText("");
-            qanswerLB.setText("");
         }
-    }
-    
-    @FXML
-    private void Addquestion() {
-        Question newquestion = new Question();
-        boolean okClicked = main.Edit_AddPage(newquestion);
-        if (okClicked) {
-            main.getquesitonList().add(newquestion);
-        }
-    }
-    
-    @FXML
-    private void Editquestion() {
-        Question selected = questiontable.getSelectionModel().getSelectedItem();
-        if (selected != null) {
-            boolean okClicked = main.Edit_AddPage(selected);
-            if (okClicked) {
-                showQuestionDetails(selected);
-            }
-
-        } else {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.initOwner(main.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
-
-            alert.showAndWait();
-        }
-    }
-    
-    @FXML
-    private void Deletequestion() {
-        int selected = questiontable.getSelectionModel().getSelectedIndex();
-        if (selected >= 0) questiontable.getItems().remove(selected);
     }
 
     public void setMainApp(Main mainApp) {
@@ -118,5 +80,38 @@ public class C3_questionoverview {
 
         questiontable.setItems(mainApp.getquesitonList());
     }
+    
+    public void setsearchedList(String searchtopic) {
+    	searchedList.clear();
+    	
+    	ObservableList<Question> getquestionList = main.getquesitonList();
+    	int questionListlength = getquestionList.size();
+    	
+        for(int i=0;i<questionListlength;i++) {
+        	Question q = getquestionList.get(i);
+        	//System.out.println("if "+q.getqtopic1()+" equals "+searchtopic+"||"+q.getqtopic2()+"is empty"+"&&"+ q.getqtopic2()+"equals"+searchtopic);
+        	if(q.getqtopic1().equals(searchtopic)
+        			||(!(q.getqtopic2().isEmpty()) && q.getqtopic2().equals(searchtopic)))
+        		searchedList.add(q);
+        }
+    	
+    }
+    
+    @FXML
+    private void Searchquestion() {
+    	String search = searchF.getText();
+    	
+    	setsearchedList(search);
+    	
+    	questiontable.setItems(searchedList);
+        
+    	qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
+        qtopic1col.setCellValueFactory(cellData -> cellData.getValue().getqtopic1P());
+        
+        showQuestionDetails(null);
+        
+        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
 
+    	
+    }
 }
