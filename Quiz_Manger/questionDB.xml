@@ -6,7 +6,7 @@
 <qtopic2>math</qtopic2>
 <qnumber>01</qnumber>
 <qdifficulty>1/10</qdifficulty>
-<qanswer>4</qanswer>
+<qanswer>c14</qanswer>
 <typeofquestion>multi</typeofquestion>
 <choices>c11,c12,c13,c14</choices>
 </Question>
@@ -18,7 +18,7 @@
 <qdifficulty>2/10</qdifficulty>
 <qanswer>jiwoo</qanswer>
 <typeofquestion>open</typeofquestion>
-<choices></choices>
+<choices/>
 </Question>
 <Question>
 <question>question example3</question>
@@ -26,7 +26,7 @@
 <qtopic2>love</qtopic2>
 <qnumber>03</qnumber>
 <qdifficulty>3/10</qdifficulty>
-<qanswer>2</qanswer>
+<qanswer>c32</qanswer>
 <typeofquestion>multi</typeofquestion>
 <choices>c31,c32,c33</choices>
 </Question>
@@ -38,7 +38,7 @@
 <qdifficulty>4/10</qdifficulty>
 <qanswer>kkang</qanswer>
 <typeofquestion>open</typeofquestion>
-<choices></choices>
+<choices/>
 </Question>
 <Question>
 <question>question example5</question>
@@ -46,7 +46,7 @@
 <qtopic2>life</qtopic2>
 <qnumber>04</qnumber>
 <qdifficulty>5/10</qdifficulty>
-<qanswer>1</qanswer>
+<qanswer>c51</qanswer>
 <typeofquestion>multi</typeofquestion>
 <choices>c51,c52,c53,54</choices>
 </Question>
@@ -58,7 +58,7 @@
 <qdifficulty>6/10</qdifficulty>
 <qanswer>dream</qanswer>
 <typeofquestion>open</typeofquestion>
-<choices></choices>
+<choices/>
 </Question>
 <Question>
 <question>question example7</question>
@@ -66,19 +66,19 @@
 <qtopic2>common sense</qtopic2>
 <qnumber>07</qnumber>
 <qdifficulty>7/10</qdifficulty>
-<qanswer>1</qanswer>
+<qanswer>c71</qanswer>
 <typeofquestion>multi</typeofquestion>
 <choices>c71,c72</choices>
 </Question>
 <Question>
 <question>question example8</question>
 <qtopic1>math</qtopic1>
-<qtopic2></qtopic2>
+<qtopic2/>
 <qnumber>08</qnumber>
 <qdifficulty>8/10</qdifficulty>
 <qanswer>happy</qanswer>
 <typeofquestion>open</typeofquestion>
-<choices></choices>
+<choices/>
 </Question>
 <Question>
 <question>question example9</question>
@@ -86,18 +86,28 @@
 <qtopic2>art</qtopic2>
 <qnumber>09</qnumber>
 <qdifficulty>9/10</qdifficulty>
-<qanswer>3</qanswer>
+<qanswer>c93</qanswer>
 <typeofquestion>multi</typeofquestion>
 <choices>c91,c92,c93</choices>
 </Question>
 <Question>
 <question>question example10</question>
 <qtopic1>law</qtopic1>
-<qtopic2></qtopic2>
+<qtopic2/>
 <qnumber>10</qnumber>
 <qdifficulty>10/10</qdifficulty>
 <qanswer>last</qanswer>
 <typeofquestion>open</typeofquestion>
-<choices></choices>
+<choices/>
+</Question>
+<Question>
+<question>question example11</question>
+<qtopic1>people</qtopic1>
+<qtopic2/>
+<qnumber>11</qnumber>
+<qdifficulty>1/10</qdifficulty>
+<qanswer>open</qanswer>
+<typeofquestion>open</typeofquestion>
+<choices/>
 </Question>
 </Questions>

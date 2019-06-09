@@ -50,7 +50,7 @@
                     </content>
                   </TitledPane>
                   <ListView fx:id="choicecol" layoutX="22.0" layoutY="149.0" prefHeight="97.0" prefWidth="369.0" />
-                  <Button layoutX="22.0" layoutY="255.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="369.0" text="Starts Quiz with topic =&gt;                                       " />
+                  <Button layoutX="22.0" layoutY="255.0" mnemonicParsing="false" onAction="#playingQuiz" prefHeight="14.0" prefWidth="369.0" text="Starts Quiz with topic =&gt;                                       " />
                   <Label fx:id="selectedtopicLB" layoutX="247.0" layoutY="259.0" text="searchedtopic" />
                </children>
             </AnchorPane>

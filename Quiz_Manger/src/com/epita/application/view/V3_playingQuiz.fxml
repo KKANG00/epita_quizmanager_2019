@@ -15,19 +15,29 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="QnumberLB" layoutX="33.0" layoutY="21.0" text="no">
+                  <Label fx:id="QnumberLB" layoutX="40.0" layoutY="48.0" text="number">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="79.0" layoutY="26.0" text="/">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="QsizeLB" layoutX="108.0" layoutY="50.0" text="size">
+                  <Label layoutX="38.0" layoutY="91.0" text="of">
                      <font>
                         <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="QsizeLB" layoutX="88.0" layoutY="91.0" text="size">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="noteLB" layoutX="14.0" layoutY="149.0" text="note" textFill="RED">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="quiztopicLB" layoutX="10.0" layoutY="14.0" text="Quiz title">
+                     <font>
+                        <Font size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -48,14 +58,10 @@
                     </content>
                   </TitledPane>
                   <ListView fx:id="choicecol" layoutX="22.0" layoutY="149.0" prefHeight="97.0" prefWidth="369.0" />
-                  <Button layoutX="307.0" layoutY="255.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="84.0" />
-                  <Label fx:id="buttonLB" layoutX="329.0" layoutY="257.0" prefHeight="4.0" prefWidth="50.0" text="button">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                  <Button layoutX="307.0" layoutY="255.0" mnemonicParsing="false" onAction="#gotonext" prefHeight="22.0" prefWidth="84.0" />
                   <TextField fx:id="answerF" layoutX="78.0" layoutY="255.0" prefHeight="18.0" prefWidth="216.0" />
                   <Label layoutX="27.0" layoutY="259.0" text="Answer:" />
+                  <Label fx:id="buttonLB" layoutX="345.0" layoutY="259.0" text="b" />
                </children>
             </AnchorPane>
         </items>

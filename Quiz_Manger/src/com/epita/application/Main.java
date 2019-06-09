@@ -1,6 +1,8 @@
 package com.epita.application;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +24,11 @@ import org.w3c.dom.NodeList;
 import com.epita.application.model.MCQChoice;
 import com.epita.application.model.MCQuestion;
 import com.epita.application.model.Question;
+import com.epita.application.model.Result;
 import com.epita.application.view.C0_rootlayout;
 import com.epita.application.view.C3_addandedit;
 import com.epita.application.view.C3_managingQuiz;
+import com.epita.application.view.C3_playingQuiz;
 import com.epita.application.view.C2_makingQuiz;
 import com.epita.application.view.C1_startmenu;
 import com.epita.application.view.C2_login;
@@ -53,6 +57,10 @@ public class Main extends Application {
     private static final String XML_FILE = "questionDB.xml";   
     
     public Main() {}
+    
+    public void setcentermainlayout(AnchorPane pane) {
+    	this.mainlayout.setCenter(pane);
+    }
     
 	@Override
 	public void start(Stage primaryStage) {
@@ -151,6 +159,22 @@ public class Main extends Application {
             mainlayout.setCenter(login);
             
             C2_login controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void playingQuiz() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/V3_playingQuiz.fxml"));
+            AnchorPane playingQuiz = (AnchorPane) loader.load();
+
+            mainlayout.setCenter(playingQuiz);
+            
+            C3_playingQuiz controller = loader.getController();
             controller.setMainApp(this);
 
         } catch (IOException e) {
@@ -365,5 +389,17 @@ public class Main extends Application {
 		int from =0;
 		int to = questionList.size();
 		questionList.remove(from, to);
+	}
+	
+	public void savetoDB(Result result) {
+		try {
+		      BufferedWriter file = new BufferedWriter(new FileWriter("result.txt"));
+		      String resultstring = result.toString();
+
+		      file.write(resultstring);
+		      file.newLine();
+		      file.close();
+		      
+		    } catch (IOException e) {}
 	}
 }
