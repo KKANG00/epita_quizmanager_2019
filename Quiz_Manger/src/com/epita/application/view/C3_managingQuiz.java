@@ -34,9 +34,7 @@ public class C3_managingQuiz {
     @FXML
     private Label qnumberLB;
     @FXML
-    private Label qtopic1LB;
-    @FXML
-    private Label qtopic2LB;
+    private Label qtopicLB;
     @FXML
     private Label qdifficultyLB;
     @FXML
@@ -59,8 +57,8 @@ public class C3_managingQuiz {
     private void showQuestionDetails(Question question) {
         if (question != null) {
             questionLB.setText(question.getquestion());
-            qtopic1LB.setText(question.getqtopic1());
-            qtopic2LB.setText(question.getqtopic2());
+            if(!question.getqtopic2().isEmpty()) qtopicLB.setText(question.getqtopic1()+", "+question.getqtopic2());
+            else qtopicLB.setText(question.getqtopic1());
             qdifficultyLB.setText(question.getqdifficulty());
             qanswerLB.setText(question.getqanswer());
             choicecol.getItems().clear();
@@ -71,8 +69,7 @@ public class C3_managingQuiz {
 
         } else {
         	questionLB.setText("");
-        	qtopic1LB.setText("");
-            qtopic2LB.setText("");
+        	qtopicLB.setText("");
             qdifficultyLB.setText("");
             qanswerLB.setText("");
         }
@@ -137,19 +134,25 @@ public class C3_managingQuiz {
     @FXML
     private void Searchquestion() {
     	String search = searchF.getText();
-    	
-    	setsearchedList(search);
-    	
-    	questiontable.setItems(searchedList);
-        
-    	qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
-        qtopic1col.setCellValueFactory(cellData -> cellData.getValue().getqtopic1P());
-        
-        showQuestionDetails(null);
-        
-        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
-
-    	
+    	if(!search.isEmpty()) {	    	
+	    	setsearchedList(search);
+	    	
+	    	questiontable.setItems(searchedList);
+	        
+	    	qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
+	        qtopic1col.setCellValueFactory(cellData -> cellData.getValue().getqtopic1P());
+	        
+	        showQuestionDetails(null);
+	        
+	        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
+    	} else {
+    		Alert alert = new Alert(AlertType.ERROR);
+		    alert.setTitle("Error");
+		    alert.setHeaderText("Empty search");
+		    alert.setContentText("enter search keyword");
+	
+		    alert.showAndWait();
+    	}
     }
 
 }

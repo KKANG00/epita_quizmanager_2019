@@ -16,7 +16,7 @@
 <qtopic2>math</qtopic2>
 <qnumber>02</qnumber>
 <qdifficulty>2/10</qdifficulty>
-<qanswer>jiwoo</qanswer>
+<qanswer>example2</qanswer>
 <typeofquestion>open</typeofquestion>
 <choices/>
 </Question>
@@ -31,24 +31,24 @@
 <choices>c31,c32,c33</choices>
 </Question>
 <Question>
+<question>question example5</question>
+<qtopic1>common sense</qtopic1>
+<qtopic2>life</qtopic2>
+<qnumber>05</qnumber>
+<qdifficulty>5/10</qdifficulty>
+<qanswer>c51</qanswer>
+<typeofquestion>multi</typeofquestion>
+<choices>c51,c52,c53,c54</choices>
+</Question>
+<Question>
 <question>question example4</question>
 <qtopic1>name</qtopic1>
 <qtopic2>math</qtopic2>
 <qnumber>04</qnumber>
 <qdifficulty>4/10</qdifficulty>
-<qanswer>kkang</qanswer>
+<qanswer>example4</qanswer>
 <typeofquestion>open</typeofquestion>
 <choices/>
-</Question>
-<Question>
-<question>question example5</question>
-<qtopic1>common sense</qtopic1>
-<qtopic2>life</qtopic2>
-<qnumber>04</qnumber>
-<qdifficulty>5/10</qdifficulty>
-<qanswer>c51</qanswer>
-<typeofquestion>multi</typeofquestion>
-<choices>c51,c52,c53,54</choices>
 </Question>
 <Question>
 <question>question example6</question>
@@ -56,7 +56,7 @@
 <qtopic2>math</qtopic2>
 <qnumber>06</qnumber>
 <qdifficulty>6/10</qdifficulty>
-<qanswer>dream</qanswer>
+<qanswer>example6</qanswer>
 <typeofquestion>open</typeofquestion>
 <choices/>
 </Question>
@@ -76,7 +76,7 @@
 <qtopic2/>
 <qnumber>08</qnumber>
 <qdifficulty>8/10</qdifficulty>
-<qanswer>happy</qanswer>
+<qanswer>example8</qanswer>
 <typeofquestion>open</typeofquestion>
 <choices/>
 </Question>
@@ -96,17 +96,7 @@
 <qtopic2/>
 <qnumber>10</qnumber>
 <qdifficulty>10/10</qdifficulty>
-<qanswer>last</qanswer>
-<typeofquestion>open</typeofquestion>
-<choices/>
-</Question>
-<Question>
-<question>question example11</question>
-<qtopic1>people</qtopic1>
-<qtopic2/>
-<qnumber>11</qnumber>
-<qdifficulty>1/10</qdifficulty>
-<qanswer>open</qanswer>
+<qanswer>example10</qanswer>
 <typeofquestion>open</typeofquestion>
 <choices/>
 </Question>

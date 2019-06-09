@@ -32,9 +32,7 @@ public class C3_playingQuiz {
     @FXML
     private Label questionLB;
     @FXML
-    private Label qtopic1LB;
-    @FXML
-    private Label qtopic2LB;
+    private Label qtopicLB;
     @FXML
     private Label qdifficultyLB;
     @FXML
@@ -61,8 +59,7 @@ public class C3_playingQuiz {
     private void initialize() {	
 		currentnumber = 0;
 	    questionLB.setText("Press start button");
-	    qtopic1LB.setText("");
-	    qtopic2LB.setText("");
+	    qtopicLB.setText("");
 	    qdifficultyLB.setText("");
 	    buttonLB.setText("Start");
 	    noteLB.setText("* Press start button");
@@ -151,8 +148,8 @@ public class C3_playingQuiz {
     	Question question = Quiz.get(number);
     	
         questionLB.setText(question.getquestion());
-        qtopic1LB.setText(question.getqtopic1());
-        qtopic2LB.setText(question.getqtopic2());
+        if(!question.getqtopic2().isEmpty()) qtopicLB.setText(question.getqtopic1()+", "+question.getqtopic2());
+        else qtopicLB.setText(question.getqtopic1());
         qdifficultyLB.setText(question.getqdifficulty());
         
         choicecol.getItems().clear();

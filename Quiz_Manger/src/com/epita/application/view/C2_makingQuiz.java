@@ -40,9 +40,7 @@ public class C2_makingQuiz {
     @FXML
     private Label qnumberLB;
     @FXML
-    private Label qtopic1LB;
-    @FXML
-    private Label qtopic2LB;
+    private Label qtopicLB;
     @FXML
     private Label qdifficultyLB;
     @FXML
@@ -66,8 +64,8 @@ public class C2_makingQuiz {
     private void showQuestionDetails(Question question) {
         if (question != null) {
             questionLB.setText(question.getquestion());
-            qtopic1LB.setText(question.getqtopic1());
-            qtopic2LB.setText(question.getqtopic2());
+            if(!question.getqtopic2().isEmpty()) qtopicLB.setText(question.getqtopic1()+", "+question.getqtopic2());
+            else qtopicLB.setText(question.getqtopic1());
             qdifficultyLB.setText(question.getqdifficulty());
             choicecol.getItems().clear();
             if(question.typeofquestion.equals("multi")) {
@@ -77,8 +75,7 @@ public class C2_makingQuiz {
 
         } else {
         	questionLB.setText("");
-        	qtopic1LB.setText("");
-            qtopic2LB.setText("");
+        	qtopicLB.setText("");
             qdifficultyLB.setText("");
         }
     }
@@ -90,8 +87,7 @@ public class C2_makingQuiz {
     }
     
     public void setsearchedList(String searchtopic) {
-    	searchedList.clear();
-    	
+    	searchedList.clear();    	
     	ObservableList<Question> getquestionList = main.getquesitonList();
     	
     	int questionListlength = getquestionList.size();
@@ -108,19 +104,28 @@ public class C2_makingQuiz {
     @FXML
     private void Searchquestion() {
     	String search = searchF.getText();
-    	selectedtopicLB.setText(search);
+    	if(!search.isEmpty()) {
     	
-    	setsearchedList(search);
-    	
-    	questiontable.setItems(searchedList);
-        
-    	qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
-        qtopic1col.setCellValueFactory(cellData -> cellData.getValue().getqtopic1P());
-        
-        showQuestionDetails(null);
-        
-        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
-        
+	    	selectedtopicLB.setText(search);
+	    	
+	    	setsearchedList(search);
+	    	
+	    	questiontable.setItems(searchedList);
+	        
+	    	qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
+	        qtopic1col.setCellValueFactory(cellData -> cellData.getValue().getqtopic1P());
+	        
+	        showQuestionDetails(null);
+	        
+	        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
+    	} else {
+    		Alert alert = new Alert(AlertType.ERROR);
+		    alert.setTitle("Error");
+		    alert.setHeaderText("Empty search");
+		    alert.setContentText("enter search keyword");
+	
+		    alert.showAndWait();
+    	}
     }
     
     @FXML

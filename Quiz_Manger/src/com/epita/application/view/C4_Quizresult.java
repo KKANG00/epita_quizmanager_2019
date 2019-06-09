@@ -1,11 +1,17 @@
 package com.epita.application.view;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
 import com.epita.application.Main;
 import com.epita.application.model.Result;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 public class C4_Quizresult {
 	
@@ -34,9 +40,9 @@ public class C4_Quizresult {
 	}
 	
 	public void getresult(int result, int size, String topic) {
-		double percentage = Math.round((result/size)*100);
 		
-		//System.out.println("result, size, percentage: "+result+","+size+","+percentage);
+		double re = result*100;
+		double percentage = Math.round(re/size);
 		
 		resultLB.setText(String.valueOf(result)+"/"+String.valueOf(size));
 		percentageLB.setText(String.valueOf(percentage)+"%");

@@ -1,10 +1,14 @@
 package com.epita.application.view;
 
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
 
 import com.epita.application.Main;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 
 public class C0_rootlayout {
@@ -68,5 +72,35 @@ public class C0_rootlayout {
 	    @FXML
 	    private void Exitmenu() {
 	        System.exit(0);
+	    }
+	    
+	    @FXML
+	    private void help() throws IOException {
+	    	File file = new File("readme.pdf");
+	    	
+	    	if(file.exists()) Desktop.getDesktop().open(file);
+	    	else {
+	    		Alert alert = new Alert(AlertType.ERROR);
+    		    alert.setTitle("Error");
+    		    alert.setHeaderText("No file exist");
+    		    alert.setContentText("readme.pdf not exist");
+    	
+    		    alert.showAndWait();
+    		    }
+	    	}
+	    
+	    @FXML
+	    private void checkresult() throws IOException {
+	    	File file = new File("result.txt");
+	    	
+	    	if(file.exists()) Desktop.getDesktop().open(file);
+	    	else {
+	    		Alert alert = new Alert(AlertType.ERROR);
+    		    alert.setTitle("Error");
+    		    alert.setHeaderText("No file exist");
+    		    alert.setContentText("result.txt not exist");
+    	
+    		    alert.showAndWait();
+	    	}
 	    }
 }

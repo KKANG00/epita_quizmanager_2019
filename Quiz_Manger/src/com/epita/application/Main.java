@@ -1,5 +1,6 @@
 package com.epita.application;
 
+import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -42,6 +43,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -67,6 +69,7 @@ public class Main extends Application {
 		try {			
 			this.primaryStage = primaryStage;
 	        this.primaryStage.setTitle("Quiz Manager");
+	        this.primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("appicon.png")));
 	        
 			initRootLayout();
 	        startpage();
@@ -393,12 +396,13 @@ public class Main extends Application {
 	
 	public void savetoDB(Result result) {
 		try {
-		      BufferedWriter file = new BufferedWriter(new FileWriter("result.txt"));
+		      BufferedWriter file = new BufferedWriter(new FileWriter("result.txt", true));
 		      String resultstring = result.toString();
 
 		      file.write(resultstring);
 		      file.newLine();
 		      file.close();
+		      Desktop.getDesktop().open(new File("result.txt"));
 		      
 		    } catch (IOException e) {}
 	}

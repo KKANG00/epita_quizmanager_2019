@@ -39,8 +39,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <Label layoutX="28.0" layoutY="14.0" text="topic:" />
-                  <Label fx:id="qtopic1LB" layoutX="90.0" layoutY="14.0" text="topic1" />
-                  <Label fx:id="qtopic2LB" layoutX="190.0" layoutY="14.0" text="topic2" />
+                  <Label fx:id="qtopicLB" layoutX="90.0" layoutY="14.0" text="topic" />
                   <Label layoutX="28.0" layoutY="28.0" text="difficulty:" />
                   <Label fx:id="qdifficultyLB" layoutX="90.0" layoutY="28.0" text="difficluty" />
                   <TitledPane animated="false" layoutX="22.0" layoutY="58.0" prefHeight="77.0" prefWidth="369.0" text="Question">
