@@ -55,11 +55,13 @@
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#Editquestion" text="Edit" />
                       <MenuItem mnemonicParsing="false" onAction="#Deletequestion" text="Delete" />
-                        <MenuItem mnemonicParsing="false" onAction="#Addquestion" text="Add" />
+                        <MenuItem mnemonicParsing="false" onAction="#AddMCQuestion" text="Add(MCQ)" />
+                        <MenuItem mnemonicParsing="false" onAction="#AddOpenquestion" text="Add(Open)" />
                     </items>
                   </MenuButton>
                   <Label layoutX="22.0" layoutY="259.0" text="Answer:" />
                   <Label fx:id="qanswerLB" layoutX="71.0" layoutY="259.0" text="answer" />
+                  <Label fx:id="qtypeLB" layoutX="355.0" layoutY="14.0" text="type" />
                </children>
             </AnchorPane>
         </items>

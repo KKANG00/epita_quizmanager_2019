@@ -30,7 +30,7 @@ public class Question {
         this.qnumber = new SimpleStringProperty(qnumber);
         this.qdifficulty = new SimpleStringProperty(qdifficulty);
         this.qanswer = new SimpleStringProperty(qanswer);
-        this.typeofquestion = "open";
+        this.typeofquestion = "";
     }
     
     public StringProperty getqnumberP() {
@@ -94,7 +94,12 @@ public class Question {
     	this.qanswer.set(qanswer);
     }
     
+    public void settype(String type) {
+    	this.typeofquestion = type;
+    }
+    
     public void setchoices(MCQChoice choices) {
     	MCQChoice empty = new MCQChoice(null);
+    	System.out.println("setchoices from question");
     }
 }

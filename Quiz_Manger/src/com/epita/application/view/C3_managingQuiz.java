@@ -1,6 +1,7 @@
 package com.epita.application.view;
 
 import com.epita.application.Main;
+import com.epita.application.model.MCQuestion;
 import com.epita.application.model.Question;
 
 import javafx.collections.FXCollections;
@@ -39,6 +40,8 @@ public class C3_managingQuiz {
     private Label qdifficultyLB;
     @FXML
     private Label qanswerLB;
+    @FXML
+    private Label qtypeLB;
 	
 	public Main main;
 	public C3_managingQuiz() {}
@@ -62,6 +65,8 @@ public class C3_managingQuiz {
             qdifficultyLB.setText(question.getqdifficulty());
             qanswerLB.setText(question.getqanswer());
             choicecol.getItems().clear();
+            qtypeLB.setText("["+question.typeofquestion+"]");
+            
             if(question.typeofquestion.equals("multi")) {
 	            for(int i=0;i<question.getchoices().MCQtoList().size();i++) 
 	            	choicecol.getItems().addAll(question.getchoices().MCQtoList().get(i));
@@ -72,11 +77,21 @@ public class C3_managingQuiz {
         	qtopicLB.setText("");
             qdifficultyLB.setText("");
             qanswerLB.setText("");
+            qtypeLB.setText("");
         }
     }
     
     @FXML
-    private void Addquestion() {
+    private void AddMCQuestion() {
+        Question newquestion = new MCQuestion();
+        boolean okClicked = main.addandedit(newquestion);
+        if (okClicked) {
+            main.getquesitonList().add(newquestion);
+        }
+    }
+    
+    @FXML
+    private void AddOpenquestion() {
         Question newquestion = new Question();
         boolean okClicked = main.addandedit(newquestion);
         if (okClicked) {

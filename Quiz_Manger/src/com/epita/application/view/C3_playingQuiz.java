@@ -189,7 +189,7 @@ public class C3_playingQuiz {
 	        C4_Quizresult controller = loader.getController();
 	        
 	        controller.setMainApp(main);
-	        controller.getresult(result, size, Quiztopic);
+	        controller.getresult(result, size, Quiztopic, Quiz);
 	        
 	        main.setcentermainlayout(Quizresult);
     	} catch(IOException e) {}

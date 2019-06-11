@@ -303,6 +303,7 @@ public class Main extends Application {
 					//System.out.println("added to list with"+questioncontent+ qtopic1+ qtopic2+ qnumber+ qdifficulty+ qanswer+ choices);
 				} else {
 					Question question = new Question(questioncontent, qtopic1, qtopic2, qnumber, qdifficulty, qanswer);
+					question.settype("open");
 					questionList.add(question);
 
 					//System.out.println("added to list with"+questioncontent+ qtopic1+ qtopic2+ qnumber+ qdifficulty+ qanswer);
@@ -403,6 +404,23 @@ public class Main extends Application {
 		      file.newLine();
 		      file.close();
 		      Desktop.getDesktop().open(new File("result.txt"));
+		      
+		    } catch (IOException e) {}
+	}
+	
+	public void savequiz(ObservableList<Question> quiz, String topic, int quizsize) {
+		try {
+			  String filename = "Quiz "+topic +".txt";
+		      BufferedWriter file = new BufferedWriter(new FileWriter(filename, true));
+		      
+		      for(int i=0;i<quizsize;i++) {
+		    	  String question = quiz.toString();
+			      file.write(question);
+			      file.newLine();
+		      }
+		      
+		      file.close();
+		      Desktop.getDesktop().open(new File(filename));
 		      
 		    } catch (IOException e) {}
 	}

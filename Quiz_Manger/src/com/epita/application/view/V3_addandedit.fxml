@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epita.application.view.C3_addandedit">
    <children>
@@ -14,11 +15,10 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="11.0">
                <children>
-                  <Label layoutX="14.0" layoutY="26.0" text="Open Question:" textFill="#002fff" />
-                  <Label layoutX="14.0" layoutY="102.0" text="MCQuestion:" textFill="RED" />
-                  <Label layoutX="14.0" layoutY="53.0" prefHeight="22.0" prefWidth="153.0" text="Don't fill the choice field " textFill="#002fff" />
-                  <Label layoutX="14.0" layoutY="127.0" prefHeight="22.0" prefWidth="153.0" text="answer field should be" textFill="RED" />
-                  <Label layoutX="14.0" layoutY="149.0" prefHeight="22.0" prefWidth="153.0" text="the number of choice" textFill="RED" />
+                  <Label fx:id="noteF" layoutX="14.0" layoutY="26.0" text="Question" textFill="#002fff">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

@@ -6,7 +6,7 @@
 <qtopic2>math</qtopic2>
 <qnumber>01</qnumber>
 <qdifficulty>1/10</qdifficulty>
-<qanswer>c14</qanswer>
+<qanswer>c13</qanswer>
 <typeofquestion>multi</typeofquestion>
 <choices>c11,c12,c13,c14</choices>
 </Question>
@@ -19,16 +19,6 @@
 <qanswer>example2</qanswer>
 <typeofquestion>open</typeofquestion>
 <choices/>
-</Question>
-<Question>
-<question>question example3</question>
-<qtopic1>human</qtopic1>
-<qtopic2>love</qtopic2>
-<qnumber>03</qnumber>
-<qdifficulty>3/10</qdifficulty>
-<qanswer>c32</qanswer>
-<typeofquestion>multi</typeofquestion>
-<choices>c31,c32,c33</choices>
 </Question>
 <Question>
 <question>question example5</question>
@@ -99,5 +89,25 @@
 <qanswer>example10</qanswer>
 <typeofquestion>open</typeofquestion>
 <choices/>
+</Question>
+<Question>
+<question>example11</question>
+<qtopic1>test</qtopic1>
+<qtopic2>test</qtopic2>
+<qnumber>11</qnumber>
+<qdifficulty>test</qdifficulty>
+<qanswer>openn</qanswer>
+<typeofquestion>open</typeofquestion>
+<choices/>
+</Question>
+<Question>
+<question>example12</question>
+<qtopic1>test</qtopic1>
+<qtopic2>test</qtopic2>
+<qnumber>12</qnumber>
+<qdifficulty>test</qdifficulty>
+<qanswer>test</qanswer>
+<typeofquestion>multi</typeofquestion>
+<choices>test,test,test,test</choices>
 </Question>
 </Questions>
