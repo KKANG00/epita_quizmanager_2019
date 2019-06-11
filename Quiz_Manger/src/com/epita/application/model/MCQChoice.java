@@ -4,16 +4,31 @@ import java.util.List;
 
 public class MCQChoice {
 	
-	private final List<String> choices;
+	/**
+	 * choices of MCQChoice
+	 */
+	private List<String> choices;
 
-	public MCQChoice(List<String> excl1) {
-		this.choices = excl1;
+	/**
+	 * constructor 
+	 * @param list construct list to be choices
+	 */
+	public MCQChoice(List<String> list) {
+		this.choices = list;
 	}
 	
+	/**
+	 * method to convert mcq choice to list
+	 * @return choices in list format
+	 */
 	public List<String> MCQtoList(){
 		return choices;
 	}
 	
+	/**
+	 * method to convert list to string for xml file
+	 * @return choices in string format
+	 */
 	public String choices_ListtoString() {
 		if(!choices.isEmpty()) {
 			String choices_=choices.get(0);

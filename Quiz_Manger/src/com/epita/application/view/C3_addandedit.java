@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.epita.application.model.MCQChoice;
-import com.epita.application.model.MCQuestion;
 import com.epita.application.model.Question;
 
 import javafx.fxml.FXML;
@@ -16,44 +15,93 @@ import javafx.stage.Stage;
 
 public class C3_addandedit {
 	
+	/**
+	 * text field to enter first topic
+	 */
 	@FXML
     private TextField qtopic1F;
+	/**
+	 * text field to enter second topic
+	 */
 	@FXML
     private TextField qtopic2F;
+	/**
+	 * text field to enter difficulty
+	 */
 	@FXML
     private TextField qdifficultyF;
+	/**
+	 * text field to enter question contents
+	 */
 	@FXML
     private TextField questionF;
+	/**
+	 * text field to enter number
+	 */
 	@FXML
     private TextField qnumberF;
+	/**
+	 * text field to enter choice1
+	 */
 	@FXML
     private TextField MCQChoice1F;
+	/**
+	 * text field to enter choice2
+	 */
 	@FXML
     private TextField MCQChoice2F;
+	/**
+	 * text field to enter choice3
+	 */
 	@FXML
     private TextField MCQChoice3F;
+	/**
+	 * text field to enter choice4
+	 */
 	@FXML
     private TextField MCQChoice4F;
+	/**
+	 * text field to enter answer
+	 */
 	@FXML
     private TextField qanswerF;
-	
+	/**
+	 * text field to enter note
+	 */
 	@FXML
 	private Label noteF;
 	
 	private Stage dialogStage;
 	
+	/**
+	 * question class to be added or edited
+	 */
     private Question question;
+    /**
+     * check done button is clicked or not
+     */
     private boolean okClicked = false;
     
+    /**
+     * initialize for page
+     */
     @FXML
     private void initialize() {
     	noteF.setText("");
     }
     
+    /**
+     * set stage of application to pop up page
+     * @param dialogStage stage of application
+     */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
     
+    /**
+     * edit and add questions by pop up page
+     * @param question question to be added and edited
+     */
     public void editQuesiton(Question question) {
         this.question = question;
 
@@ -106,10 +154,17 @@ public class C3_addandedit {
         }
     }
     
+    /**
+     * done button clicked or not
+     * @return "true" if clicked "false" if not
+     */
     public boolean isOkClicked() {
         return okClicked;
     }
     
+    /**
+     * done button
+     */
     @FXML
     private void EditDone() {
     	boolean check = false;
@@ -144,12 +199,19 @@ public class C3_addandedit {
         }
     }
     
+    /**
+     * cancel button
+     */
     @FXML
     private void EditCancel() {
     	okClicked = true;
         dialogStage.close();
     }
     
+    /**
+     * check fields are filled properly or not for open question
+     * @return "true" if it is okay "false" if there is empty field that should be filled
+     */
     private boolean InputCheck_open() {
         String errorMessage = "";
 
@@ -183,6 +245,10 @@ public class C3_addandedit {
 
     }
     
+    /**
+     * check fields are filled properly or not for open question
+     * @return "true" if it is okay "false" if there is empty field that should be filled
+     */
     private boolean InputCheck_mcq() {
         String errorMessage = "";
 
@@ -221,6 +287,5 @@ public class C3_addandedit {
 
             return false;
         }
-
     }
 }

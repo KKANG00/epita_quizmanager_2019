@@ -9,16 +9,31 @@ import javafx.scene.control.Alert.AlertType;
 
 public class C2_login {
 	
+	/**
+	 * valid id to login
+	 */
 	private static final String VAILD_ID = "admin";
+	/**
+	 * valid password to login
+	 */
 	private static final String VAILD_PW = "password";
 	
+	/**
+	 * text field to enter id
+	 */
 	@FXML
     private TextField loginid;
+	/**
+	 * text field to enter password
+	 */
 	@FXML
     private TextField loginpw;
 	
 	private Main main;
 	
+	/**
+	 * if login information is correct, go to question overview (managing quiz)
+	 */
 	@FXML
 	public void gotooverview() {
 		if(loginid.getText().equals(VAILD_ID) && loginpw.getText().equals(VAILD_PW)) {

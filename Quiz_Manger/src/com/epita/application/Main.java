@@ -52,14 +52,31 @@ public class Main extends Application {
 	
     private Stage primaryStage;
     private BorderPane mainlayout;
+    
+    /**
+     * to check is it first executing or not
+     */
     private boolean init = true;
     
+    /**
+     * question list used whole scope
+     */
     private ObservableList<Question> questionList = FXCollections.observableArrayList();
 
+    /**
+     * name of database file
+     */
     private static final String XML_FILE = "questionDB.xml";   
     
+    /**
+     * constructor
+     */
     public Main() {}
     
+    /**
+     * set center of page above root layout
+     * @param pane page to set to center
+     */
     public void setcentermainlayout(AnchorPane pane) {
     	this.mainlayout.setCenter(pane);
     }
@@ -79,6 +96,9 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * first page of application
+	 */
 	public void startpage() {
 		try {            
             FXMLLoader loader2 = new FXMLLoader();
@@ -95,6 +115,9 @@ public class Main extends Application {
         }
 	}
 	
+	/**
+	 * back ground of whole pages (menu bar at the top)
+	 */
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -118,7 +141,29 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * login page to move to managing page
+     */
+    public void login() {
+    	try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("view/V2_login.fxml"));
+            AnchorPane login = (AnchorPane) loader.load();
 
+            mainlayout.setCenter(login);
+            
+            C2_login controller = loader.getController();
+            controller.setMainApp(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * managing quiz page
+     */
     public void managingQuiz() {
         try {
 
@@ -136,6 +181,9 @@ public class Main extends Application {
         }
     }
     
+    /**
+     * making quiz page before playing quiz page
+     */
     public void makingQuiz() {
         try {
 
@@ -153,22 +201,9 @@ public class Main extends Application {
         }
     }
     
-    public void login() {
-    	try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/V2_login.fxml"));
-            AnchorPane login = (AnchorPane) loader.load();
-
-            mainlayout.setCenter(login);
-            
-            C2_login controller = loader.getController();
-            controller.setMainApp(this);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
+    /**
+     * playing quiz page 
+     */
     public void playingQuiz() {
     	try {
             FXMLLoader loader = new FXMLLoader();
@@ -185,6 +220,11 @@ public class Main extends Application {
         }
     }
     
+    /**
+     * pop up page to perform add and edit question
+     * @param question question class to be added or edited
+     * @return to check menu button is clicked or not
+     */
     public boolean addandedit(Question question) {
     	try {
             FXMLLoader loader = new FXMLLoader();
@@ -215,6 +255,10 @@ public class Main extends Application {
         return primaryStage;
     }
     
+    /**
+     * for getting question list used whole scope of application
+     * @return question list derived from DB
+     */
     public ObservableList<Question> getquesitonList(){
     	return questionList;
     }	
@@ -223,6 +267,10 @@ public class Main extends Application {
 		launch(args);
 	}
 	
+	/**
+	 * getting file path from loaded or saved path before
+	 * @return file path to save file
+	 */
 	public File getDBfilePath() {
 	    Preferences prefs = Preferences.userNodeForPackage(Main.class);
 	    String filePath = prefs.get("filePath", null);
@@ -233,6 +281,10 @@ public class Main extends Application {
 	    }
 	}
 	
+	/**
+	 * setting file path as used when load from and save to DB
+	 * @param file file used when load from and save to DB
+	 */
 	public void setDBfilePath(File file) {
 	    Preferences prefs = Preferences.userNodeForPackage(Main.class);
 	    if (file != null) {
@@ -246,6 +298,10 @@ public class Main extends Application {
 	    }
 	}
 	
+	/**
+	 * fileDAO transform xml file method
+	 * @param doc document class to be transformed
+	 */
 	public void transformXmlDocument(Document doc){
 		try {
 			
@@ -261,6 +317,10 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * load questions from xml file to question list when executing application 
+	 * @param file file to get database from
+	 */
 	public void loadfromXML(File file) {
 		try {			
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -300,13 +360,11 @@ public class Main extends Application {
 					Question question = new MCQuestion(questioncontent, qtopic1, qtopic2, qnumber, qdifficulty, qanswer, choices);
 
 					questionList.add(question);
-					//System.out.println("added to list with"+questioncontent+ qtopic1+ qtopic2+ qnumber+ qdifficulty+ qanswer+ choices);
 				} else {
 					Question question = new Question(questioncontent, qtopic1, qtopic2, qnumber, qdifficulty, qanswer);
 					question.settype("open");
 					questionList.add(question);
 
-					//System.out.println("added to list with"+questioncontent+ qtopic1+ qtopic2+ qnumber+ qdifficulty+ qanswer);
 				}
 			}
 			
@@ -324,6 +382,10 @@ public class Main extends Application {
 		}
 	}
 	
+	/**
+	 * save questions to xml file when save button executed
+	 * @param file file to save database to
+	 */
 	public void savetoXML(File file) {
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -359,9 +421,7 @@ public class Main extends Application {
 				
 				if(q.typeofquestion.equals("multi")) newchoicesE.setTextContent(q.getchoices().choices_ListtoString());
 				else newchoicesE.setTextContent("");
-				
-				//System.out.println("this is "+i+"th question: "+q.getquestion());
-				
+							
 				newquestionE.appendChild(newquestioncontentE);
 				newquestionE.appendChild(newqtopic1E);
 				newquestionE.appendChild(newqtopic2E);
@@ -389,12 +449,19 @@ public class Main extends Application {
 		
 	}
 	
+	/*
+	 * reset current question list class to open new file database
+	 */
 	public void resetquestionList() {
 		int from =0;
 		int to = questionList.size();
 		questionList.remove(from, to);
 	}
 	
+	/**
+	 * method to save result of quiz to text file
+	 * @param result quiz result class after playing quiz
+	 */
 	public void savetoDB(Result result) {
 		try {
 		      BufferedWriter file = new BufferedWriter(new FileWriter("result.txt", true));
@@ -408,6 +475,12 @@ public class Main extends Application {
 		    } catch (IOException e) {}
 	}
 	
+	/**
+	 * method to save quiz to text file
+	 * @param quiz quiz played by user (question list)
+	 * @param topic topic string to set a file name
+	 * @param quizsize size of quiz
+	 */
 	public void savequiz(ObservableList<Question> quiz, String topic, int quizsize) {
 		try {
 			  String filename = "Quiz "+topic +".txt";

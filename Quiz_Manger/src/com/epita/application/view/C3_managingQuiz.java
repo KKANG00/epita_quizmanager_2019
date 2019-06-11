@@ -17,35 +17,78 @@ import javafx.scene.control.TextField;
 
 public class C3_managingQuiz {
 	
+	/**
+	 * list of questions after searching 
+	 */
 	private ObservableList<Question> searchedList =  FXCollections.observableArrayList();
 	
+	/**
+	 * text field to enter search string
+	 */
 	@FXML
     private TextField searchF;
+	/**
+	 * table view to showing question list
+	 */
 	@FXML
     private TableView<Question> questiontable;
+	/**
+	 * table column to showing numbers of questions
+	 */
     @FXML
     private TableColumn<Question, String> qnumbercol;
+    /**
+     * table column to showing first topics of questions
+     */
     @FXML
     private TableColumn<Question, String> qtopic1col;
+    /**
+     * list view to showing choices of questions
+     */
     @FXML
     private ListView<String> choicecol;
 
+    /**
+     * label to showing question contents
+     */
     @FXML
     private Label questionLB;
+    /**
+     * label to showing question number
+     */
     @FXML
     private Label qnumberLB;
+    /**
+     * label to showing first topic of question
+     */
     @FXML
     private Label qtopicLB;
+    /**
+     * label to showing difficulty of question
+     */
     @FXML
     private Label qdifficultyLB;
+    /**
+     * label to showing question answer
+     */
     @FXML
     private Label qanswerLB;
+    /**
+     * label to showing question type
+     */
     @FXML
     private Label qtypeLB;
 	
 	public Main main;
+	
+	/**
+	 * constructor
+	 */
 	public C3_managingQuiz() {}
 	
+	/**
+	 * initialize page
+	 */
 	@FXML
     private void initialize() {
         qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
@@ -57,6 +100,10 @@ public class C3_managingQuiz {
 
     }
     
+	/**
+	 * show detail information of questions
+	 * @param question questions to be shown details
+	 */
     private void showQuestionDetails(Question question) {
         if (question != null) {
             questionLB.setText(question.getquestion());
@@ -81,6 +128,9 @@ public class C3_managingQuiz {
         }
     }
     
+    /**
+     * add mcquestion method
+     */
     @FXML
     private void AddMCQuestion() {
         Question newquestion = new MCQuestion();
@@ -89,7 +139,10 @@ public class C3_managingQuiz {
             main.getquesitonList().add(newquestion);
         }
     }
-    
+
+    /**
+     * add open question method
+     */
     @FXML
     private void AddOpenquestion() {
         Question newquestion = new Question();
@@ -99,6 +152,9 @@ public class C3_managingQuiz {
         }
     }
     
+    /**
+     * edit question method
+     */
     @FXML
     private void Editquestion() {
         Question selected = questiontable.getSelectionModel().getSelectedItem();
@@ -119,18 +175,19 @@ public class C3_managingQuiz {
         }
     }
     
+    /**
+     * delete question method
+     */
     @FXML
     private void Deletequestion() {
         int selected = questiontable.getSelectionModel().getSelectedIndex();
         if (selected >= 0) questiontable.getItems().remove(selected);
     }
-
-    public void setMainApp(Main mainApp) {
-        this.main = mainApp;
-
-        questiontable.setItems(mainApp.getquesitonList());
-    }
     
+    /**
+     * searching method
+     * @param searchtopic string to search
+     */
     public void setsearchedList(String searchtopic) {
     	searchedList.clear();
     	
@@ -143,9 +200,11 @@ public class C3_managingQuiz {
         			||(!(q.getqtopic2().isEmpty()) && q.getqtopic2().equals(searchtopic)))
         		searchedList.add(q);
         }
-    	
     }
     
+    /**
+     * search and set table view and columns
+     */
     @FXML
     private void Searchquestion() {
     	String search = searchF.getText();
@@ -170,4 +229,9 @@ public class C3_managingQuiz {
     	}
     }
 
+    public void setMainApp(Main mainApp) {
+        this.main = mainApp;
+
+        questiontable.setItems(mainApp.getquesitonList());
+    }
 }

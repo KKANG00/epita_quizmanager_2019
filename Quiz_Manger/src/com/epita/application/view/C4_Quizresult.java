@@ -1,9 +1,5 @@
 package com.epita.application.view;
 
-import java.awt.Desktop;
-import java.io.File;
-import java.io.IOException;
-
 import com.epita.application.Main;
 import com.epita.application.model.Question;
 import com.epita.application.model.Result;
@@ -15,41 +11,71 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 public class C4_Quizresult {
-	
+	/**
+	 * question list that made by topic user choose
+	 */
 	private ObservableList<Question> quiz = FXCollections.observableArrayList();
+	/**
+	 * topic string user choose
+	 */
 	private String quiztopic;
+	/**
+	 * size of quiz
+	 */
 	private int quizsize;
 	
+	/**
+	 * label for showing result
+	 */
 	@FXML
 	private Label resultLB;
+	/**
+	 * label for showing percentage 
+	 */
 	@FXML
 	private Label percentageLB;
-    @FXML
+    /**
+     * label for showing note
+     */
+	@FXML
     private Label noteLB;
+	/**
+	 * label for showing quiz topic
+	 */
     @FXML
     private Label quiztopicLB;
-    
+    /**
+     * text field to enter user name
+     */
     @FXML
     private TextField usernameF;
 	
 	public Main main;
 	private Stage dialogStage;
+	/**
+	 * constructor
+	 */
 	public C4_Quizresult() {}
 	
+	/**
+	 * initialize page
+	 */
 	@FXML
 	private void initialize() {
-//		resultLB.setText("result");
-//		percentageLB.setText("percentage%");
-	    noteLB.setText("Enter your name and press button to save your result");;
-//	    quiztopicLB.setText("topic");
+	    noteLB.setText("Enter your name and press button to save your result");
 	    
 	}
 	
+	/**
+	 * pass quiz information from last page
+	 * @param result number of questions user got
+	 * @param size size of quiz
+	 * @param topic topic string
+	 * @param Quiz quiz (question list)
+	 */
 	public void getresult(int result, int size, String topic, ObservableList<Question> Quiz) {
 		
 		double re = result*100;
@@ -64,11 +90,10 @@ public class C4_Quizresult {
 	    this.quizsize = size;
 	    this.quiz = Quiz;
 	}
-	
-    public void setMainApp(Main mainApp) {
-        this.main = mainApp;
-    }
     
+	/**
+	 * method to save quiz result to text
+	 */
     @FXML
     private void saveresult() {    	
     	if (usernameF.getText() == null || usernameF.getText().length() == 0) {
@@ -88,8 +113,15 @@ public class C4_Quizresult {
     	}
     }
 
+    /**
+     * method to save quiz that user played
+     */
     @FXML
     private void savequiz() {
     	main.savequiz(quiz, quiztopic, quizsize);
+    }
+    
+    public void setMainApp(Main mainApp) {
+        this.main = mainApp;
     }
 }

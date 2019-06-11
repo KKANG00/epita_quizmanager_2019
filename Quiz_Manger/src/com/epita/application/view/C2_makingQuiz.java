@@ -9,8 +9,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -19,36 +17,75 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 public class C2_makingQuiz {
+	
+	/**
+	 * list of questions after searching 
+	 */
 	private ObservableList<Question> searchedList = FXCollections.observableArrayList();
 	
+	/**
+	 * text field to enter search string
+	 */
 	@FXML
     private TextField searchF;
+	/**
+	 * question table view to show question list
+	 */
 	@FXML
     private TableView<Question> questiontable;
+	/**
+	 * table column for numbers of questions
+	 */
     @FXML
     private TableColumn<Question, String> qnumbercol;
+    /**
+	 * table column for first topics of questions
+	 */
     @FXML
     private TableColumn<Question, String> qtopic1col;
+    /**
+     * list view to show choices list
+     */
     @FXML
     private ListView<String> choicecol;
 
+    /**
+     * label for showing question contents
+     */
     @FXML
     private Label questionLB;
+    /**
+     * label for showing numbers of questions
+     */
     @FXML
     private Label qnumberLB;
+    /**
+     * label for showing topics of questions
+     */
     @FXML
     private Label qtopicLB;
+    /**
+     * label for showing difficulties of questions
+     */
     @FXML
     private Label qdifficultyLB;
+    /**
+     * label for showing topic that is selected by user to be made as quiz
+     */
     @FXML
     private Label selectedtopicLB;
 	
 	public Main main;
+	/**
+	 * constructor
+	 */
 	public C2_makingQuiz() {}
 	
+	/**
+	 * initialize for page
+	 */
 	@FXML
     private void initialize() {
         qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
@@ -61,6 +98,10 @@ public class C2_makingQuiz {
 
     }
     
+	/**
+	 * show detail information of questions
+	 * @param question questions to be shown details
+	 */
     private void showQuestionDetails(Question question) {
         if (question != null) {
             questionLB.setText(question.getquestion());
@@ -79,13 +120,11 @@ public class C2_makingQuiz {
             qdifficultyLB.setText("");
         }
     }
-
-    public void setMainApp(Main mainApp) {
-        this.main = mainApp;
-
-        questiontable.setItems(mainApp.getquesitonList());
-    }
     
+    /**
+     * searching method
+     * @param searchtopic string to search
+     */
     public void setsearchedList(String searchtopic) {
     	searchedList.clear();    	
     	ObservableList<Question> getquestionList = main.getquesitonList();
@@ -93,14 +132,15 @@ public class C2_makingQuiz {
     	int questionListlength = getquestionList.size();
         for(int i=0;i<questionListlength;i++) {
         	Question q = getquestionList.get(i);
-        	//System.out.println("if "+q.getqtopic1()+" equals "+searchtopic+"||"+q.getqtopic2()+"is empty"+"&&"+ q.getqtopic2()+"equals"+searchtopic);
-        	if(q.getqtopic1().equals(searchtopic)
+        	if(q.getqtopic1().contains(searchtopic)
         			||(!(q.getqtopic2().isEmpty()) && q.getqtopic2().equals(searchtopic)))
         		searchedList.add(q);
-        }
-    	
+        }    	
     }
     
+    /**
+     * search and set table view and columns
+     */
     @FXML
     private void Searchquestion() {
     	String search = searchF.getText();
@@ -128,29 +168,22 @@ public class C2_makingQuiz {
     	}
     }
     
+    /**
+     * after quiz made pass arguments and open playing quiz page
+     */
     @FXML
-    private void playingQuiz() {
-//    	setQuiz();
-//    	main.Quiztopic = selectedtopicLB.getText();
-//    	main.playingQuiz();
-    	
+    private void playingQuiz() {    	
     	if(!searchedList.isEmpty()) {
 	    	try {
 		    	FXMLLoader loader = new FXMLLoader();
 		        loader.setLocation(Main.class.getResource("view/V3_playingQuiz.fxml"));
 		        AnchorPane playingQuiz = (AnchorPane) loader.load();
-		        //Parent root = (Parent) loader.load();
 		        
 		        C3_playingQuiz controller = loader.getController();
 		        controller.getQuiz(searchedList, selectedtopicLB.getText());
 		        
-		        controller.setMainApp(main);
-	//	        Stage stage = new Stage();
-	//	        stage.setScene(new Scene(root));
-		        
+		        controller.setMainApp(main);		        
 		        main.setcentermainlayout(playingQuiz);
-		        
-		        //stage.show();
 		        
 	    	} catch(IOException e) {}
 	    	
@@ -162,6 +195,12 @@ public class C2_makingQuiz {
 	
 		    alert.showAndWait();
     	}
+    }
+
+    public void setMainApp(Main mainApp) {
+        this.main = mainApp;
+
+        questiontable.setItems(mainApp.getquesitonList());
     }
 
 }

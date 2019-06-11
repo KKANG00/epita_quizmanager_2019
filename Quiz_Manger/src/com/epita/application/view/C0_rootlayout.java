@@ -14,16 +14,18 @@ import javafx.stage.FileChooser;
 public class C0_rootlayout {
 	
 	    private Main main;
-	
-	    public void setMainApp(Main main) {
-	        this.main = main;
-	    }
 	    
+	    /**
+	     * program>restart button
+	     */
 	    @FXML
 	    private void goback() {
 	    	main.startpage();
 	    }
 	    
+	    /**
+	     * file>open button
+	     */
 	    @FXML
 	    private void Openmenu() {
 	    	main.resetquestionList();
@@ -41,6 +43,9 @@ public class C0_rootlayout {
 	        }
 	    }
 	
+	    /**
+	     * file>save button
+	     */
 	    @FXML
 	    private void Savemenu() {
 	        File questionDB = main.getDBfilePath();
@@ -51,6 +56,9 @@ public class C0_rootlayout {
 	        }
 	    }
 	
+	    /**
+	     * in case file not exist set file
+	     */
 	    @FXML
 	    private void SaveAsmenu() {
 	        FileChooser fileChooser = new FileChooser();
@@ -69,26 +77,37 @@ public class C0_rootlayout {
 	        }
 	    }
 	
+	    /**
+	     * program>exit button
+	     */
 	    @FXML
 	    private void Exitmenu() {
 	        System.exit(0);
 	    }
 	    
+	    /**
+	     * help>guide button
+	     * @throws IOException file exception 
+	     */
 	    @FXML
 	    private void help() throws IOException {
-	    	File file = new File("readme.pdf");
+	    	File file = new File("User guide.pdf");
 	    	
 	    	if(file.exists()) Desktop.getDesktop().open(file);
 	    	else {
 	    		Alert alert = new Alert(AlertType.ERROR);
     		    alert.setTitle("Error");
     		    alert.setHeaderText("No file exist");
-    		    alert.setContentText("readme.pdf not exist");
+    		    alert.setContentText("User guide.pdf not exist");
     	
     		    alert.showAndWait();
     		    }
 	    	}
 	    
+	    /**
+	     * result page save button
+	     * @throws IOException file exception
+	     */
 	    @FXML
 	    private void checkresult() throws IOException {
 	    	File file = new File("result.txt");
@@ -102,5 +121,9 @@ public class C0_rootlayout {
     	
     		    alert.showAndWait();
 	    	}
+	    }
+	    
+	    public void setMainApp(Main main) {
+	        this.main = main;
 	    }
 }

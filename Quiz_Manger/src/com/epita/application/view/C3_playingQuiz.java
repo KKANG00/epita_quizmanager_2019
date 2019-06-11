@@ -19,42 +19,90 @@ import javafx.scene.layout.AnchorPane;
 public class C3_playingQuiz {
 	
 	public Main main;
+	/**
+	 * question list that is made by user's choose topic
+	 */
 	private ObservableList<Question> Quiz =  FXCollections.observableArrayList();
+	/**
+	 * list of string to save answers from users
+	 */
 	private ObservableList<String> UseranswerList = FXCollections.observableArrayList();
 	
+	/**
+	 * number of current question (by order)
+	 */
 	private int currentnumber;
+	/**
+	 * size of quiz
+	 */
 	private int quizsize = 0;
+	/**
+	 * topic of quiz
+	 */
 	private String Quiztopic;
-	
+	/**
+	 * list view for showing choices
+	 */
     @FXML
     private ListView<String> choicecol;
-
+    /**
+     * label for showing question contents
+     */
     @FXML
     private Label questionLB;
+    /**
+     * label for showing first topic of question
+     */
     @FXML
     private Label qtopicLB;
+    /**
+     * label for showing difficulty of question
+     */
     @FXML
     private Label qdifficultyLB;
+    /**
+     * label for showing number of question
+     */
     @FXML
     private Label QnumberLB;
+    /**
+     * label for showing quiz size
+     */
     @FXML
     private Label QsizeLB;
+    /**
+     * label for showing button name
+     */
     @FXML
     private Label buttonLB;
+    /**
+     * label for showing note
+     */
     @FXML
     private Label noteLB;
+    /**
+     * label for showing topic of quiz
+     */
     @FXML
     private Label quiztopicLB;
-    
-    private int level = 0;
-    
+    /**
+     * text field to enter answer of question
+     */
     @FXML
     private TextField answerF;
+    
+    /**
+     * instance to change button start->next->done as order
+     */
+    private int level = 0;
     
     public void setMainApp(Main mainApp) {
         this.main = mainApp;
     }
     
+    /**
+     * initialize page
+     */
 	@FXML
     private void initialize() {	
 		currentnumber = 0;
@@ -66,10 +114,14 @@ public class C3_playingQuiz {
 	    this.level = 0;
     }
 	
+	/**
+	 * get quiz data from last page 
+	 * @param Quiz question list made by topic user choose
+	 * @param Quiztopic quiz topic user choose
+	 */
 	public void getQuiz(ObservableList<Question> Quiz, String Quiztopic) {
 		this.Quiz = Quiz;
 		this.Quiztopic = Quiztopic;
-		
 		this.quizsize = Quiz.size();
 		
 		quiztopicLB.setText(("Quiz of "+Quiztopic));
@@ -77,6 +129,9 @@ public class C3_playingQuiz {
 		QnumberLB.setText("0");
 	}
     
+	/**
+	 * on playing quiz button (start->next->done)
+	 */
     @FXML
     public void gotonext() {
     	String answer = answerF.getText();
@@ -121,13 +176,14 @@ public class C3_playingQuiz {
     	
     		    alert.showAndWait();
     		}
-    		
-    		//for(int i=0;i<UseranswerList.size();i++) System.out.println(">>"+UseranswerList.get(i));
     		Quizresult();
     		
     	}
     } 
     
+    /**
+     * quiz start
+     */
     public void quizstart() {
     	level++;
     	
@@ -140,10 +196,10 @@ public class C3_playingQuiz {
     	else if(quizsize>1) buttonLB.setText("Next");
     }
     
-    public void quizzing(int number) {
-    	getquestionofQuiz(number);
-    }
-    
+    /**
+     * get questions detail from list
+     * @param number question number in quiz
+     */
     public void getquestionofQuiz(int number) {    	
     	Question question = Quiz.get(number);
     	
@@ -161,10 +217,18 @@ public class C3_playingQuiz {
 
     }
     
+    /**
+     * set answer field as user choose (click one of list)
+     * @param choice choice string that user choose
+     */
     private void choosing(String choice) {
     	answerF.setText(choice);
     }
     
+    /**
+     * evaluating quiz
+     * @return how many questions user got correct
+     */
     private int checkquiz() {
     	int score=0;
     	for(int i=0;i<quizsize;i++) {
@@ -175,6 +239,9 @@ public class C3_playingQuiz {
     	return score;
     }
     
+    /**
+     * show result of quiz and pass the result to next page
+     */
     private void Quizresult() {
     	
     	int result = checkquiz();
