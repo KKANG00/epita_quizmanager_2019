@@ -132,7 +132,7 @@ public class C2_makingQuiz {
     	int questionListlength = getquestionList.size();
         for(int i=0;i<questionListlength;i++) {
         	Question q = getquestionList.get(i);
-        	if(q.getqtopic1().contains(searchtopic)
+        	if(q.getqtopic1().equals(searchtopic)
         			||(!(q.getqtopic2().isEmpty()) && q.getqtopic2().equals(searchtopic)))
         		searchedList.add(q);
         }    	
@@ -159,12 +159,14 @@ public class C2_makingQuiz {
 	        
 	        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
     	} else {
-    		Alert alert = new Alert(AlertType.ERROR);
-		    alert.setTitle("Error");
-		    alert.setHeaderText("Empty search");
-		    alert.setContentText("enter search keyword");
-	
-		    alert.showAndWait();
+    		questiontable.setItems(main.getquesitonList());
+	        
+	    	qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
+	        qtopic1col.setCellValueFactory(cellData -> cellData.getValue().getqtopic1P());
+	        
+	        showQuestionDetails(null);
+	        
+	        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
     	}
     }
     

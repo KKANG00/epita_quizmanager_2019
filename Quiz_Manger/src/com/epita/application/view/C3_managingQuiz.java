@@ -136,7 +136,7 @@ public class C3_managingQuiz {
         Question newquestion = new MCQuestion();
         boolean okClicked = main.addandedit(newquestion);
         if (okClicked) {
-            main.getquesitonList().add(newquestion);
+        	if(!(newquestion.getqtopic1() == null)) main.getquesitonList().add(newquestion);
         }
     }
 
@@ -148,7 +148,7 @@ public class C3_managingQuiz {
         Question newquestion = new Question();
         boolean okClicked = main.addandedit(newquestion);
         if (okClicked) {
-            main.getquesitonList().add(newquestion);
+        	if(!(newquestion.getqtopic1() == null)) main.getquesitonList().add(newquestion);
         }
     }
     
@@ -196,7 +196,7 @@ public class C3_managingQuiz {
     	
         for(int i=0;i<questionListlength;i++) {
         	Question q = getquestionList.get(i);
-        	if(q.getqtopic1().equals(searchtopic)
+        	if(q.getqtopic1().contains(searchtopic)
         			||(!(q.getqtopic2().isEmpty()) && q.getqtopic2().equals(searchtopic)))
         		searchedList.add(q);
         }
@@ -220,12 +220,15 @@ public class C3_managingQuiz {
 	        
 	        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
     	} else {
-    		Alert alert = new Alert(AlertType.ERROR);
-		    alert.setTitle("Error");
-		    alert.setHeaderText("Empty search");
-		    alert.setContentText("enter search keyword");
-	
-		    alert.showAndWait();
+    		questiontable.setItems(main.getquesitonList());
+	        
+	    	qnumbercol.setCellValueFactory(cellData -> cellData.getValue().getqnumberP());
+	        qtopic1col.setCellValueFactory(cellData -> cellData.getValue().getqtopic1P());
+	        
+	        showQuestionDetails(null);
+	        
+	        questiontable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showQuestionDetails(newValue));
+
     	}
     }
 

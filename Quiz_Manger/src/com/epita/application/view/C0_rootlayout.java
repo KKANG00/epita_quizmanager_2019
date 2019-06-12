@@ -1,8 +1,21 @@
 package com.epita.application.view;
 
 import java.awt.Desktop;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import com.epita.application.Main;
 
@@ -14,9 +27,10 @@ import javafx.stage.FileChooser;
 public class C0_rootlayout {
 	
 	    private Main main;
+	    private static final String XML_file = "questionDB.xml";
 	    
 	    /**
-	     * program>restart button
+	     * restart button in program menu
 	     */
 	    @FXML
 	    private void goback() {
@@ -24,7 +38,7 @@ public class C0_rootlayout {
 	    }
 	    
 	    /**
-	     * file>open button
+	     * open button in file menu
 	     */
 	    @FXML
 	    private void Openmenu() {
@@ -44,41 +58,36 @@ public class C0_rootlayout {
 	    }
 	
 	    /**
-	     * file>save button
+	     * save button in file menu
 	     */
 	    @FXML
 	    private void Savemenu() {
-	        File questionDB = main.getDBfilePath();
-	        if (questionDB != null) {
+	        File questionDB = new File(XML_file);
+	        if (questionDB.exists()) {
 	            main.savetoXML(questionDB);
 	        } else {
-	        	SaveAsmenu();
+	        	try {
+	    	    	DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+	                DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+	                Document document = documentBuilder.newDocument();
+	                
+	                main.transformXmlDocument(document);
+	                
+	                Element newrootE = document.createElement("Questions");
+	    	    	document.appendChild(newrootE);
+	    	    	
+	    	    	main.transformXmlDocument(document);
+	    	    	
+	    	    	} catch(Exception e) {}    	
+	    			
+	    	    	File file = new File(XML_file);
+
+	    	    	if(file.exists()) main.savetoXML(file);
 	        }
 	    }
 	
 	    /**
-	     * in case file not exist set file
-	     */
-	    @FXML
-	    private void SaveAsmenu() {
-	        FileChooser fileChooser = new FileChooser();
-	
-	        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-	                "XML files (*.xml)", "*.xml");
-	        fileChooser.getExtensionFilters().add(extFilter);
-	
-	        File file = fileChooser.showSaveDialog(main.getPrimaryStage());
-	
-	        if (file != null) {
-	            if (!file.getPath().endsWith(".xml")) {
-	                file = new File(file.getPath() + ".xml");
-	            }
-	            main.savetoXML(file);
-	        }
-	    }
-	
-	    /**
-	     * program>exit button
+	     * exit button in program menu
 	     */
 	    @FXML
 	    private void Exitmenu() {
@@ -86,12 +95,12 @@ public class C0_rootlayout {
 	    }
 	    
 	    /**
-	     * help>guide button
+	     * help button in about menu
 	     * @throws IOException file exception 
 	     */
 	    @FXML
 	    private void help() throws IOException {
-	    	File file = new File("User guide.pdf");
+	    	File file = new File("documents/User guide.pdf");
 	    	
 	    	if(file.exists()) Desktop.getDesktop().open(file);
 	    	else {
@@ -105,7 +114,7 @@ public class C0_rootlayout {
 	    	}
 	    
 	    /**
-	     * result page save button
+	     * result button in about menu
 	     * @throws IOException file exception
 	     */
 	    @FXML

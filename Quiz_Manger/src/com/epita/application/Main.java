@@ -271,15 +271,15 @@ public class Main extends Application {
 	 * getting file path from loaded or saved path before
 	 * @return file path to save file
 	 */
-	public File getDBfilePath() {
-	    Preferences prefs = Preferences.userNodeForPackage(Main.class);
-	    String filePath = prefs.get("filePath", null);
-	    if (filePath != null) {
-	        return new File(filePath);
-	    } else {
-	        return null;
-	    }
-	}
+//	public File getDBfilePath() {
+//	    Preferences prefs = Preferences.userNodeForPackage(Main.class);
+//	    String filePath = prefs.get("filePath", null);
+//	    if (filePath != null) {
+//	        return new File(filePath);
+//	    } else {
+//	        return null;
+//	    }
+//	}
 	
 	/**
 	 * setting file path as used when load from and save to DB
@@ -484,10 +484,10 @@ public class Main extends Application {
 	public void savequiz(ObservableList<Question> quiz, String topic, int quizsize) {
 		try {
 			  String filename = "Quiz "+topic +".txt";
-		      BufferedWriter file = new BufferedWriter(new FileWriter(filename, true));
+		      BufferedWriter file = new BufferedWriter(new FileWriter(filename, false));
 		      
 		      for(int i=0;i<quizsize;i++) {
-		    	  String question = quiz.toString();
+		    	  String question = quiz.get(i).qtoString();
 			      file.write(question);
 			      file.newLine();
 		      }

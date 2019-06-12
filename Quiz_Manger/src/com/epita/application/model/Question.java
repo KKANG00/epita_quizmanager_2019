@@ -43,11 +43,9 @@ public class Question {
 	/**
 	 * question class to string to save quiz
 	 */
-    @Override
-	public String toString() {
-		return "Question [question=" + question + ", qtopic1=" + qtopic1 + ", qtopic2=" + qtopic2 + ", qnumber="
-				+ qnumber + ", qdifficulty=" + qdifficulty + ", qanswer=" + qanswer + ", typeofquestion="
-				+ typeofquestion + "]";
+	public String qtoString() {
+		return "Quesiton(" +qnumber.get()+") ["+question.get()+", first topic: "+qtopic1.get()+", second topic: "+qtopic2.get()+", difficulty: "+
+				qdifficulty.get()+", answer: "+qanswer.get()+", type of question: "+typeofquestion;
 	}
 
     /**

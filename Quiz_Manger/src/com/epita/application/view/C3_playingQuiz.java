@@ -123,6 +123,7 @@ public class C3_playingQuiz {
 		this.Quiz = Quiz;
 		this.Quiztopic = Quiztopic;
 		this.quizsize = Quiz.size();
+		answerF.setText("press start button ==>");;
 		
 		quiztopicLB.setText(("Quiz of "+Quiztopic));
 		QsizeLB.setText(String.valueOf(quizsize));
@@ -130,7 +131,7 @@ public class C3_playingQuiz {
 	}
     
 	/**
-	 * on playing quiz button (start->next->done)
+	 * on playing quiz button (start,next,done)
 	 */
     @FXML
     public void gotonext() {
