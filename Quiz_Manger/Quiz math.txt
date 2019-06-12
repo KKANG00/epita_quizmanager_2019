@@ -1,0 +1,4 @@
+Quesiton(04) [question example4, first topic: people, second topic: math, difficulty: 4/10, answer: example4, type of question: open
+Quesiton(06) [question example6, first topic: people, second topic: math, difficulty: 6/10, answer: example6, type of question: open
+Quesiton(07) [question example7, first topic: english, second topic: math, difficulty: 7/10, answer: c71, type of question: multi
+Quesiton(09) [question example9, first topic: math, second topic: art, difficulty: 9/10, answer: c93, type of question: multi
