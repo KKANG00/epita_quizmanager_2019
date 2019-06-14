@@ -86,7 +86,7 @@ public class Main extends Application {
 		try {			
 			this.primaryStage = primaryStage;
 	        this.primaryStage.setTitle("Quiz Manager");
-	        this.primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("appicon.png")));
+	        //this.primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("appicon.png")));
 	        
 			initRootLayout();
 	        startpage();

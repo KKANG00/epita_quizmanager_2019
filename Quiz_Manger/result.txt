@@ -1,1 +1,2 @@
 Result [result=3/4, score=75.0%, topic=Quiz math, name=jiwoo, date=2019/06/13 00:51:30]
+Result [result=2/3, score=67.0%, topic=Quiz history, name=jiwoo, date=2019/06/14 13:52:50]

@@ -201,6 +201,6 @@ public class Question {
      * @param choices choices of question
      */
     public void setchoices(MCQChoice choices) {
-    	MCQChoice empty = new MCQChoice(null);
+    	
     }
 }
