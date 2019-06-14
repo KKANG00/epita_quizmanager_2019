@@ -1,0 +1,4 @@
+1. Please download my project folder ('Quiz_Manager').
+2. Execute batch file (Quiz_Manager.bat) in the project folder.
+3. Jar file (Quiz_Manager.jar) will be executed.
+(jar file and batch file should be in the same project folder.)
